@@ -23,13 +23,22 @@ function App() {
             </h2>
             
             <div className="grid md:grid-cols-2 gap-8">
-              <ChapterList onSelect={setSelectedChapter} />
+              <div className='hidden md:block'>
+
+                <ChapterList onSelect={setSelectedChapter} />
+              </div>
               <div className="flex items-center justify-center">
                 <AudioPlayer
                   src={selectedChapter.audioUrl}
+                  // src='/audio/1.mp3'
                   title={`${selectedChapter.number}. ${selectedChapter.name}`}
                 />
+               
               </div>
+              <div className='md:hidden '>
+                <ChapterList  onSelect={setSelectedChapter} />
+
+                </div>
             </div>
           </div>
         </section>
