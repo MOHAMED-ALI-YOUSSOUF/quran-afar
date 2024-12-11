@@ -22,11 +22,9 @@ export function ChapterList({ onSelect }: ChapterListProps) {
   // Filtrer les chapitres en fonction de la recherche et du Juz sélectionné
   const filteredChapters = chapters.filter((chapter) => {
     const matchesSearch = chapter.name.toLowerCase().includes(searchQuery.toLowerCase());
-
     const matchesJuz =
       selectedJuz === null || // Si aucun Juz n'est sélectionné
-      (selectedJuz && chapter.juz.some(juz => juz >= selectedJuz[0] && juz <= selectedJuz[1])); // Vérifie si un des Juz correspond
-
+      (selectedJuz && chapter.juz >= selectedJuz[0] && chapter.juz <= selectedJuz[1]); // Si le chapitre est dans la plage sélectionnée
     return matchesSearch && matchesJuz;
   });
 
